@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playbook</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 20px;
+        }
+        .header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .banner {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .banner .title {
+            font-size: 1.2em;
+            display: flex;
+            justify-content: space-between;
+        }
+        .banner .subtitle {
+            font-size: 1em;
+            margin-top: 5px;
+            border-top: 1px solid white;
+            padding-top: 5px;
+        }
+        .content {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        .step-title {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+        .dialogue {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: right;
+            font-style: italic;
+        }
+        .dropdown {
+            margin-bottom: 20px;
+        }
+        .dropdown select {
+            font-size: 1em;
+            padding: 5px;
+            margin-left: 10px;
+        }
+        table { width: 100%; border-collapse: collapse; }
+        td { padding: 8px; border: 1px solid #ddd; vertical-align: top; }
+    </style>
+    <script>
+        function updateActivities() {
+            var selectedTime = document.getElementById('time-select').value;
+            var activities = document.getElementsByClassName('activity');
+
+            document.getElementById('selected-time').innerText = "Tiempo efectivo de clase: " + selectedTime + " minutos";
+
+            for (var i = 0; i < activities.length; i++) {
+                activities[i].style.display = 'block';
+            }
+
+            if (selectedTime === '45') {
+                document.getElementById('activity-2').style.display = 'none';
+            } else if (selectedTime === '40') {
+               document.getElementById('activity-2').style.display = 'none';
+               document.getElementById('activity-5').style.display = 'none';
+               document.getElementById('activity-1').style.display = 'none';
+           }
+        }
+
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="header">
+    <h1>Playbook - H1 - M24</h1>
+</div>
+
+<div class="container">
+    <div class="dropdown">
+        <label for="time-select">Tiempo efectivo de Clase:</label>
+        <select id="time-select" onchange="updateActivities()">
+            <option value="50">50 minutos</option>
+            <option value="45">45 minutos</option>
+            <option value="40">40 minutos</option>
+        </select>
+    </div>
+
+    <h2 id="selected-time" class="time-title">Tiempo efectivo de clase: 50 minutos</h2>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+<!-- Actividad 1 -->
+<div id="activity-1" class="activity">
+    <div class="banner" onclick="toggleContent('saludo_ritual')">
+        <div class="title">🎉 Actividad 1: Saludo y Ritual Gnius Club ⏰ Tiempo: 2.5 minutos</div>
+        <div class="subtitle">Preparación para la creación de colecciones de Prompts para flujos de trabajo.</div>
+    </div>
+    <div id="saludo_ritual" class="content">
+        <table>
+            <tr>
+                <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 2 "Bienvenida".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Hola, Genios. Hoy vamos a diseñar la colección de prompts para el WorkFlow que planificaron en la sesión anterior. Aprenderemos cómo guiar a la IA en cada etapa del proceso y cómo conectar los outputs de cada etapa con los inputs de la siguiente. ¡Prepárense para un reto de organización y lógica!"</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 3 "¿Cómo Están?".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Antes de comenzar, quiero saber cómo se sienten hoy. Si están listos para diseñar una colección de prompts, levanten una mano y cierren el puño. Si necesitan un poco de energía, sacudan sus manos."</td>
+           </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 4 "Gracias por Asistir".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, juntemos nuestras manos en agradecimiento por la oportunidad de aprender y trabajar juntos. ¡Gracias por asistir, Genios!"</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 4 (0.5 minutos):</strong> Proyectar Diapositiva 5 "Objetivos de la Misión".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hoy tenemos dos objetivos: 1. Aplicar el Prompt Engineering para guiar a la IA en cada subproceso del WorkFlow. 2. Conectar los outputs de cada etapa con el input de la siguiente para obtener el producto final."</td>
+           </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 2 -->
+<div id="activity-2" class="activity">
+    <div class="banner" onclick="toggleContent('state_change')">
+        <div class="title">🤸‍♂️ Actividad 2: State Change ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Pausa activa para mejorar el enfoque y preparar la mente para la creación.</div>
+    </div>
+    <div id="state_change" class="content">
+        <table>
+            <tr>
+                 <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 6 "Manos Mágicas".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, vamos a realizar una breve pausa para despejar nuestra mente y prepararnos para el trabajo. Froten sus manos rápidamente hasta que se sientan calientes, luego colóquenlas suavemente sobre sus ojos cerrados. Esto ayudará a reducir tensiones y enfocar la mente."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 7 "Cronómetro - 1 Minuto".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 8 "Reflexión sobre Manos Mágicas".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, esta breve actividad no solo relaja los músculos de nuestros ojos, sino que también calma la mente y mejora nuestra concentración. Estas pequeñas pausas físicas son esenciales para mantenernos enfocados en tareas importantes. ¡Bien hecho!"</td>
+           </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 3 -->
+<div id="activity-3" class="activity">
+    <div class="banner" onclick="toggleContent('team_gnius')">
+        <div class="title">👥 Actividad 3: Team Gnius ⏰ Tiempo: 3 minutos</div>
+        <div class="subtitle">Formación de equipos para la creación de flujos de trabajo.</div>
+    </div>
+    <div id="team_gnius" class="content">
+        <table>
+            <tr>
+                 <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 9 "Formación de Equipos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, para este reto trabajaremos en equipos de 2 personas. Busquen a un compañero con quien no hayan trabajado antes. ¡Tienen 1 minuto para organizarse!"</td>
+            </tr>
+            <tr>
+               <td><strong>PASO 2 (1 minuto):</strong> Proyectar Diapositiva 10 "Cronómetro - 1 Minuto".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+           </tr>
+           <tr>
+                <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 11 "Recoger Magic Tablets".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora que tienen sus equipos listos, necesito que un representante de cada equipo pase a recoger las Magic Tablets. Tienen 1 minuto para hacerlo."</td>
+            </tr>
+            <tr>
+               <td><strong>PASO 4 (1 minuto):</strong> Proyectar Diapositiva 12 "Cronómetro - 1 Minuto".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 4 -->
+<div id="activity-4" class="activity">
+    <div class="banner" onclick="toggleContent('challenge')">
+        <div class="title">🚀 Actividad 4: Challenge ⏰ Tiempo: 39 minutos</div>
+        <div class="subtitle">Creación de una colección de prompts para un WorkFlow con IA.</div>
+    </div>
+    <div id="challenge" class="content">
+        <table>
+            <tr>
+                 <td><strong>PASO 1 (0.5 minutos):</strong> Proyectar Diapositiva 13 "Introducción al Challenge".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, hoy vamos a aplicar sus habilidades de Prompt Engineering para guiar a la IA a crear campañas de marketing. Usando el workflow que diseñaron en la clase pasada, deberán crear una colección de prompts que permitan a la IA ejecutar cada subproceso de forma eficiente y coordinada. ¡Prepárense para demostrar su capacidad de crear un sistema de trabajo con la IA!"</td>
+            </tr>
+            <tr>
+               <td><strong>PASO 2 (0.5 minutos):</strong> Proyectar Diapositiva 14 "Explicación del Challenge".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "Su tarea es transformar el workflow que diseñaron en una serie de prompts detallados y conectados. Cada prompt debe dar instrucciones claras a la IA para que realice una tarea específica, genere un resultado útil, y que ese resultado pueda servir como input para la siguiente etapa. El objetivo es que, siguiendo su colección de prompts, la IA pueda crear campañas de marketing para diferentes productos de manera eficiente y coherente. Recuerden, la IA es una herramienta y ustedes deben ser sus guías."</td>
+           </tr>
+           <tr>
+               <td><strong>PASO 3 (0.5 minutos):</strong> Proyectar Diapositiva 15 "Etapa 1: Revisión del WorkFlow".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "Primero, revisen el workflow que diseñaron en la clase anterior. Identifiquen todos los pasos que definieron para la creación de campañas de marketing, los inputs que necesitan y los outputs que esperan obtener en cada etapa.  Asegúrense de que cada paso esté claramente definido y conectado con los demás. Recuerden que esto servirá como base para sus prompts, y que si hay errores aquí, habrá errores en los prompts."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 4 (5 minutos):</strong> Proyectar Diapositiva 16 "Cronómetro - 5 Minutos".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 5 (0.5 minutos):</strong> Proyectar Diapositiva 17 "Etapa 2: Colección de Prompts".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Ahora, creen una colección de prompts para cada etapa del workflow. Usen las técnicas de Prompt Engineering que han aprendido durante el módulo. Definan roles para la IA, proporcionen instrucciones claras, y especifiquen el formato de respuesta que necesitan.  Además, pidan que la IA especifique qué información necesita para cada paso, de esta manera se asegurarán de que las respuestas de la IA sean útiles y relevantes para el siguiente paso."</td>
+            </tr>
+           <tr>
+                 <td><strong>PASO 6 (5 minutos):</strong> Proyectar Diapositiva 18 "Cronómetro - 5 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 7 (0.5 minutos):</strong> Proyectar Diapositiva 19 "Etapa 3: Conexión de Prompts".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Asegúrense de que el output de cada prompt pueda servir como input para el siguiente. Por ejemplo, si un prompt genera un análisis del mercado, el siguiente prompt debe usar ese análisis como punto de partida. Usen palabras clave, frases o formatos similares para facilitar la conexión entre prompts.  Recuerden que los prompts son como los engranes de una maquinaria: deben encajar correctamente para que todo el sistema funcione de forma adecuada."</td>
+           </tr>
+            <tr>
+                <td><strong>PASO 8 (5 minutos):</strong> Proyectar Diapositiva 20 "Cronómetro - 5 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+             <tr>
+                <td><strong>PASO 9 (0.5 minutos):</strong> Proyectar Diapositiva 21 "Etapa 4: Refinamiento de Prompts".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Revisen cuidadosamente cada prompt y vean si las instrucciones son claras y precisas, si definen los roles de la IA, si piden los outputs en el formato correcto, y si usan prompts que facilitan la conexión entre pasos. Asegúrense de que los prompts sean fáciles de entender para cualquier persona que vaya a utilizarlos. Recuerden que en éste paso deberán refinar sus prompts para que sean lo más efectivos posibles."</td>
+            </tr>
+            <tr>
+                 <td><strong>PASO 10 (5 minutos):</strong> Proyectar Diapositiva 22 "Cronómetro - 5 Minutos".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+           <tr>
+                 <td><strong>PASO 11 (0.5 minutos):</strong> Proyectar Diapositiva 23 "Etapa 5: Testing y Ajustes".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "Usen los prompts que han creado en ChatGPT. Pongan especial atención a cómo la IA entiende cada instrucción, cómo sigue los pasos y cómo utiliza los outputs de los prompts anteriores como insumo para los siguientes.  Si es necesario, ajusten los prompts hasta que la IA siga el proceso de forma correcta. Recuerden que probar sus prompts es fundamental para que el resultado final sea el deseado."</td>
+           </tr>
+           <tr>
+                <td><strong>PASO 12 (5 minutos):</strong> Proyectar Diapositiva 24 "Cronómetro - 5 Minutos".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+            </tr>
+           <tr>
+                <td><strong>PASO 13 (0.5 minutos):</strong> Proyectar Diapositiva 25 "Etapa 6: Documentación de Prompts".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "Documenten los prompts que han creado en un formato claro y organizado. Deben de poder presentar los prompts con el rol que le dan a la IA, con la instrucción y el formato de respuesta que esperan.  Su objetivo final es crear una colección de prompts clara y lista para su uso. Recuerden que su objetivo es que la colección de prompts pueda ser utilizada por cualquier persona para crear campañas de marketing."</td>
+           </tr>
+           <tr>
+               <td><strong>PASO 14 (3 minutos):</strong> Proyectar Diapositiva 26 "Cronómetro - 3 Minutos".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> N/A</td>
+           </tr>
+           <tr>
+                <td><strong>PASO 15 (0.5 minutos):</strong> Proyectar Diapositiva 27 "Presentación de Resultados".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "Vamos a seleccionar a dos parejas al azar para que presenten sus colecciones de prompts y nos expliquen cómo conectaron cada paso de su flujo de trabajo. Escuchemos al primer equipo."</td>
+           </tr>
+           <tr>
+               <td><strong>PASO 16 (2 minutos):</strong> Proyectar Diapositiva 28 "Presentaciones".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Adelante, equipo. Compartan sus colecciones de prompts con el resto de la clase."</td>
+            </tr>
+            <tr>
+                <td><strong>PASO 17 (0.5 minutos):</strong> Proyectar Diapositiva 29 "Revisión de Objetivos".</td>
+                <td><strong>DIÁLOGO SUGERIDO:</strong> "Hemos logrado nuestros dos objetivos: 1. Aplicamos el Prompt Engineering para guiar a la IA en cada subproceso del WorkFlow. 2. Conectamos los outputs de cada etapa con el input de la siguiente para obtener el producto final. ¡Gran trabajo, Genios!"</td>
+            </tr>
+            <tr>
+               <td><strong>PASO 18 (0.5 minutos):</strong> Proyectar Diapositiva 30 "You've Got Mon-e".</td>
+               <td><strong>DIÁLOGO SUGERIDO:</strong> "¡Felicidades, Genios! Se llevan Mon-e por su dedicación y creatividad al crear una colección de prompts para un workflow con la IA. ¡Han demostrado ser grandes ingenieros de prompts!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- Actividad 5 -->
+<div id="activity-5" class="activity">
+    <div class="banner" onclick="toggleContent('honor_the_dojo')">
+        <div class="title">🙏 Actividad 5: Honor The Dojo ⏰ Tiempo: 2 minutos</div>
+        <div class="subtitle">Cierre y organización del espacio de aprendizaje.</div>
+    </div>
+    <div id="honor_the_dojo" class="content">
+        <table>
+           <tr>
+                <td><strong>PASO 1 (2 minutos):</strong> Proyectar Diapositiva 31 "Honor The Dojo".</td>
+                 <td><strong>DIÁLOGO SUGERIDO:</strong> "Genios, es momento de devolver las Magic Tablets y dejar todo en orden. Gracias por su trabajo hoy, hicieron un gran esfuerzo. Un espacio limpio refleja el respeto por lo que hacemos y por quienes compartimos este espacio. ¡Nos vemos en la próxima misión!"</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- -------------------------------------------------Espacio para Actividades --------------------------------------------------------- -->
+
+</div>
+
+</body>
+</html>
